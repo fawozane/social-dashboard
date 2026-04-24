@@ -4,7 +4,6 @@ namespace Fawozane\SocialDashboard\Controller;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Fawozane\SocialDashboard\Service\ScoreService;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Http\JsonResponse;
 
 class DashboardController extends ActionController
 {
@@ -28,62 +27,33 @@ class DashboardController extends ActionController
      */
     public function resultAction(): ResponseInterface
     {
-        //  WICHTIG: Daten korrekt aus Request holen
-        $requestData = $this->request->hasArgument('data')
-            ? $this->request->getArgument('data')
-            : [];
+        // 👉 WICHTIG: sauber holen
+        $requestData = $this->request->getArgument('data') ?? [];
 
-        //  Defaults + Input kombinieren
         $data = [
-            'followers' => (int)($requestData['followers'] ?? 1000),
-            'likes' => (int)($requestData['likes'] ?? 120),
-            'comments' => (int)($requestData['comments'] ?? 30),
-            'posts' => (int)($requestData['posts'] ?? 10),
+            'followers' => (int)($requestData['followers'] ?? 0),
+            'likes' => (int)($requestData['likes'] ?? 0),
+            'comments' => (int)($requestData['comments'] ?? 0),
+            'posts' => (int)($requestData['posts'] ?? 0),
         ];
 
-        // Score berechnen
-        $result = $this->scoreService->calculateScore($data);
-        $tips = $this->scoreService->generateTips($data);
+        // Debug (optional)
+        // var_dump($data); die();
 
-        // Chart Daten
+        $result = $this->scoreService->calculateScore($data);
+        $tips   = $this->scoreService->generateTips($data);
+
         $chartData = [
             'likes' => $data['likes'],
             'comments' => $data['comments']
         ];
 
-        // Score Klassifizierung
-        $scoreClass = 'low';
-
-        if ($result['score'] > 70) {
-            $scoreClass = 'high';
-        } elseif ($result['score'] > 40) {
-            $scoreClass = 'medium';
-        }
-
-        // Trend (Demo)
-        $trend = [20, 35, 50, 45, 70, $result['score']];
-
-        // 📦 Alles ans Template
         $this->view->assignMultiple([
             'result' => $result,
             'tips' => $tips,
-            'chartData' => $chartData,
-            'scoreClass' => $scoreClass,
-            'trend' => $trend
+            'chartData' => $chartData
         ]);
 
         return $this->htmlResponse();
-    }
-    public function resultAjaxAction(): ResponseInterface
-    {
-        $data = $this->request->getParsedBody()['data'] ?? [];
-
-        $result = $this->scoreService->calculateScore($data);
-
-        return new JsonResponse([
-            'score' => $result['score'],
-            'likes' => $data['likes'],
-            'comments' => $data['comments']
-        ]);
     }
 }

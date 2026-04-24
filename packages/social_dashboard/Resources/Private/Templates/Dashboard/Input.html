@@ -1,16 +1,22 @@
+<div class="social-input-wrapper" xmlns:f="http://www.w3.org/1999/xhtml">
 
+    <div class="input-card">
+        <h2>📊 Social Analyse starten</h2>
 
-<f:form action="result" method="post">
+        <f:form action="result" controller="Dashboard" objectName="data" method="post">
 
-    <form id="dashboardForm">
-        <input type="number" name="followers" placeholder="Follower" />
-        <input type="number" name="likes" placeholder="Likes" />
-        <input type="number" name="comments" placeholder="Kommentare" />
-        <input type="number" name="posts" placeholder="Posts" />
+            <div class="form-grid">
+                <f:form.textfield property="followers" type="number" placeholder="Follower" required="true" />
+                <f:form.textfield property="likes" type="number" placeholder="Likes" required="true" />
+                <f:form.textfield property="comments" type="number" placeholder="Kommentare" required="true" />
+                <f:form.textfield property="posts" type="number" placeholder="Posts" required="true" />
+            </div>
 
-        <button type="submit">Analyse starten</button>
-    </form>
+            <button type="submit" class="btn-analyse">
+                Analyse starten
+            </button>
 
+        </f:form>
+    </div>
 
-
-</f:form>
+</div>

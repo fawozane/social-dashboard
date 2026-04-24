@@ -153,27 +153,3 @@
     });
 </script>
 
-<script>
-    document.getElementById('dashboardForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const formData = new FormData(this);
-
-        fetch(window.location.pathname + '?type=999', {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(data => {
-
-                console.log("AJAX DATA:", data);
-
-                // KPI Update
-                document.querySelector('[data-target]').innerText = data.score;
-
-                // Charts neu bauen
-                updateCharts(data);
-
-            });
-    });
-</script>
