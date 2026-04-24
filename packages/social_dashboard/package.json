@@ -1,0 +1,17 @@
+{
+  "name": "social-dashboard",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "author": "Fawozane Ouro-Djobo",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "echarts": "^6.0.0"
+  },
+  "devDependencies": {
+    "vite": "^8.0.9"
+  }
+}

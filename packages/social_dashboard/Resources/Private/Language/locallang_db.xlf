@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext">
+        <body>
+
+            <trans-unit id="tt_content.header">
+                <source>Header</source>
+            </trans-unit>
+
+            <trans-unit id="tt_content.CType">
+                <source>Type</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

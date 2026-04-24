@@ -1,0 +1,17 @@
+base: 'https://social-dashboard3.ddev.site/'
+dependencies:
+  - bootstrap-package/full
+  - social-dashboard
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    locale: de-De
+    navigationTitle: English
+    flag: de
+    hreflang: ''
+    websiteTitle: ''
+rootPageId: 1
+websiteTitle: ''

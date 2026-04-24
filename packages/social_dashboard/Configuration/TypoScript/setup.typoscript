@@ -1,0 +1,26 @@
+}
+plugin.tx_socialdashboard {
+    view {
+        templateRootPaths.0 = EXT:social_dashboard/Resources/Private/Templates/
+        partialRootPaths.0 = EXT:social_dashboard/Resources/Private/Partials/
+        layoutRootPaths.0 = EXT:social_dashboard/Resources/Private/Layouts/
+    }
+}
+
+tt_content.socialdashboard_dashboard =< lib.contentElement
+tt_content.socialdashboard_dashboard {
+    templateName = Generic
+
+    20 = USER
+    20 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = SocialDashboard
+        pluginName = Dashboard
+    }
+}
+page.includeCSS.dashboard = EXT:social_dashboard/Resources/Public/Css/dashboard.css
+page.config.contentObjectExceptionHandler = 0
+
+page {
+  logo = EXT:social_dashboard/Resources/Public/Icons/econsor-logo-black.svg
+}

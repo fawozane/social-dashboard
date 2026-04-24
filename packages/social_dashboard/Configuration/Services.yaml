@@ -1,0 +1,17 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Fawozane\SocialDashboard\:
+    resource: '../Classes/*'
+
+  Fawozane\SocialDashboard\Controller\BackendDashboardController:
+    public: true
+    tags: ['backend.controller']
+    arguments:
+      $moduleTemplateFactory: '@TYPO3\CMS\Backend\Template\ModuleTemplateFactory'
+      $scoreService: '@Fawozane\SocialDashboard\Service\ScoreService'
+      $uriBuilder: '@TYPO3\CMS\Backend\Routing\UriBuilder'
+      $metaAuthService: '@Fawozane\SocialDashboard\Service\MetaAuthService'

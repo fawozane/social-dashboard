@@ -1,0 +1,109 @@
+/* Abstand oben */
+.instagram-btn {
+    display: inline-block;
+    margin-bottom: 2rem; /* 👈 Abstand zum Rest */
+}
+
+/* Moderner Instagram Button */
+.instagram-btn {
+    background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+}
+#applyFilter {
+    color: black;
+}
+
+.filter-bar select,
+.filter-bar button {
+    color: black;
+}
+.instagram-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* Filter Button verbessern */
+.filter-bar button {
+    background: #023952;
+    color: white;
+    border: none;
+    transition: all 0.2s ease;
+}
+#applyFilter.button{
+    color: black;
+}
+.filter-bar button:hover {
+    background: #035a7a;
+}
+
+/* Selects etwas moderner */
+.filter-bar select {
+    border: 1px solid #ddd;
+    transition: border 0.2s;
+}
+
+.filter-bar select:focus {
+    border-color: #023952;
+    outline: none;
+}
+.dashboard {
+    font-family: system-ui, sans-serif;
+}
+
+/* FILTER */
+.filter-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filter-bar select,
+.filter-bar button {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+/* KPI */
+.kpis {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.kpi {
+    flex: 1;
+    background: linear-gradient(135deg, #0b1f2a, #023952);
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.kpi span {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* GRID */
+.chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* DELTA */
+.delta {
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+.delta.up { color: #01F8C1; }
+.delta.down { color: #ff5c5c; }

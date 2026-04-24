@@ -1,0 +1,88 @@
+<div class="social-widget">
+
+    <h2>Social Dashboard</h2>
+
+    <div class="kpi-grid">
+        <div class="kpi-card score">
+            <span>Score</span>
+            <h2>{data.score}</h2>
+        </div>
+
+        <div class="kpi-card">
+            <span>Likes</span>
+            <h2>{data.likes}</h2>
+        </div>
+
+        <div class="kpi-card">
+            <span>Kommentare</span>
+            <h2>{data.comments}</h2>
+        </div>
+    </div>
+
+</div>
+
+<div id="chart"
+
+     style="height:250px; width:100%;"
+     data-score="{data.score}"
+     data-likes="{data.likes}"
+     data-comments="{data.comments}">
+</div>
+
+
+<style>
+    .social-widget {
+        background: linear-gradient(135deg, #0b1f2a, #023952);
+        color: #fff;
+        padding: 1rem;
+        border-radius: 10px;
+        font-family: Arial, sans-serif;
+    }
+
+    /* GRID */
+    .kpi-grid {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    /* CARD */
+    .kpi-card {
+        flex: 1;
+        background: rgba(255,255,255,0.05);
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        transition: 0.2s ease;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .kpi-card:hover {
+        transform: translateY(-4px);
+        background: rgba(255,255,255,0.08);
+    }
+
+    /* SCORE */
+    .kpi-card.score {
+        background: linear-gradient(135deg, #01F8C1, #00cba3);
+        color: #000;
+        font-weight: bold;
+    }
+
+    /* TEXT */
+    .kpi-card span {
+        font-size: 0.8rem;
+        opacity: 0.7;
+    }
+
+    .kpi-card h2 {
+        margin-top: 0.5rem;
+        font-size: 1.8rem;
+    }
+
+    /* CHART */
+    .chart {
+        height: 220px;
+    }
+</style>
+

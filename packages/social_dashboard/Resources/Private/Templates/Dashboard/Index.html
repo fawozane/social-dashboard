@@ -1,0 +1,94 @@
+<f:layout name="Module" />
+
+<f:section name="Content">
+
+    <f:asset.css
+            identifier="socialDashboardCss"
+            href="EXT:social_dashboard/Resources/Public/Css/backend.css"
+    />
+    <f:asset.script
+            identifier="socialDashboardJs"
+            src="EXT:social_dashboard/Resources/Public/Build/dashboard.js"
+            type="module"
+    />
+
+    <script type="application/json" id="social-dashboard-config">
+        <f:format.raw><f:format.json value="{ajaxUrl: ajaxUrl, initialData: initialData}" /></f:format.raw>
+    </script>
+    <f:if condition="!{isConnected}">
+        <a href="{loginUrl}" target="_blank" class="instagram-btn btn btn-primary">
+            Instagram verbinden
+        </a>
+    </f:if>
+    <div class="dashboard">
+
+        <div class="filter-bar">
+            <select id="platform">
+                <option value="instagram">Instagram</option>
+                <option value="tiktok">TikTok</option>
+            </select>
+
+            <select id="range">
+                <option value="7">7 Tage</option>
+                <option value="30">30 Tage</option>
+            </select>
+
+            <button id="applyFilter" class="btn btn-default">Apply</button>
+        </div>
+
+        <div class="kpis" style="display: flex; gap: 20px; margin: 20px 0;">
+            <div class="kpi card">
+                <div class="card-header">Likes</div>
+                <div class="card-body">
+                    <h2 id="likesTotal">0</h2>
+                    <div id="likesDelta" class="delta"></div>
+                </div>
+            </div>
+
+            <div class="kpi card">
+                <div class="card-header">Comments</div>
+                <div class="card-body">
+                    <h2 id="commentsTotal">0</h2>
+                    <div id="commentsDelta" class="delta"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="card">
+                <div id="barChart" style="width: 100%; height:300px;"></div>
+            </div>
+            <div class="card">
+                <div id="lineChart" style="width: 100%; height:300px;"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="kpis" style="display:flex; gap:20px; margin-top:20px;">
+
+        <div class="kpi card">
+            <div class="card-header">Score</div>
+            <div class="card-body">
+                <h2 id="dashboardScore">0</h2>
+            </div>
+        </div>
+
+        <div class="kpi card">
+            <div class="card-header">Engagement</div>
+            <div class="card-body">
+                <h2 id="dashboardEngagement">0%</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+        <div class="card-header">Empfehlungen</div>
+        <div class="card-body">
+            <ul id="dashboardTips"></ul>
+        </div>
+    </div>
+
+
+</f:section>

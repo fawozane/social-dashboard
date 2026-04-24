@@ -1,0 +1,19 @@
+{
+  "name": "fawozane/social-dashboard",
+  "type": "typo3-cms-extension",
+  "description": "Social Dashboard Extension für TYPO3 v14",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "typo3/cms-core": "^14.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Fawozane\\SocialDashboard\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "social_dashboard"
+    }
+  }
+}

@@ -1,0 +1,179 @@
+<div class="social-dashboard">
+
+    <!-- DATA BRIDGE -->
+    <div id="dashboard"
+         data-likes="{chartData.likes}"
+         data-comments="{chartData.comments}"
+         data-score="{result.score}">
+    </div>
+
+    <h1>📊 Social Analytics</h1>
+
+    <!-- KPI -->
+    <div class="kpi-grid fade-in">
+
+        <div class="kpi-card score">
+            <span>Score</span>
+            <h2 class="counter" data-target="{result.score}">0</h2>
+        </div>
+
+        <div class="kpi-card">
+            <span>Engagement</span>
+            <h2>{result.engagementRate}%</h2>
+        </div>
+
+        <div class="kpi-card">
+            <span>Likes</span>
+            <h2 class="counter" data-target="{chartData.likes}">0</h2>
+        </div>
+
+        <div class="kpi-card">
+            <span>Kommentare</span>
+            <h2 class="counter" data-target="{chartData.comments}">0</h2>
+        </div>
+
+    </div>
+
+    <!-- Charts -->
+    <div class="chart-grid fade-in">
+        <div id="barChart" class="chart"></div>
+        <div id="gaugeChart" class="chart"></div>
+    </div>
+
+    <!-- Trend -->
+    <div id="trendChart" class="fade-in"></div>
+
+    <!-- Tipps -->
+    <div class="tips-box fade-in">
+        <h3>💡 Empfehlungen</h3>
+        <ul>
+            <f:if condition="{tips}">
+                <ul>
+                    <f:for each="{tips}" as="tip">
+                        <li>{tip}</li>
+                    </f:for>
+                </ul>
+            </f:if>
+
+            <f:if condition="{tips -> f:count()} == 0">
+                <p>🔥 Deine Performance ist top – keine Optimierungen nötig!</p>
+            </f:if>
+        </ul>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const el = document.getElementById('dashboard');
+
+        let likes = Number(el.dataset.likes);
+        let comments = Number(el.dataset.comments);
+        let score = Number(el.dataset.score);
+
+        let trend = [20, 35, 50, 45, 70, score];
+
+        console.log("DATA:", likes, comments, score);
+
+        // COUNTER
+        document.querySelectorAll('.counter').forEach(counter => {
+            const target = +counter.getAttribute('data-target') || 0;
+            let count = 0;
+
+            const update = () => {
+                const inc = target / 40;
+                if (count < target) {
+                    count += inc;
+                    counter.innerText = Math.floor(count);
+                    requestAnimationFrame(update);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            update();
+        });
+
+        // BAR CHART
+        const barChart = echarts.init(document.getElementById('barChart'));
+        barChart.setOption({
+            title: { text: 'Interaktionen', textStyle: { color: '#fff' } },
+            xAxis: { data: ['Likes', 'Kommentare'], axisLabel: { color: '#ccc' } },
+            yAxis: { axisLabel: { color: '#ccc' } },
+            series: [{
+                type: 'bar',
+                data: [likes, comments],
+                itemStyle: { color: '#01F8C1',  shadowBlur: 15,
+                    shadowColor: 'rgba(1,248,193,0.6)' }
+            }]
+        });
+
+        // GAUGE
+        const gaugeChart = echarts.init(document.getElementById('gaugeChart'));
+        gaugeChart.setOption({
+            series: [{
+                type: 'gauge',
+                axisLine: {
+                    lineStyle: {
+                        width: 15,
+                        color: [
+                            [0.4, '#ef4444'],
+                            [0.7, '#f59e0b'],
+                            [1, '#22c55e']
+                        ]
+                    }
+                },
+                progress: { show: true },
+                detail: { formatter: '{value}%', color: '#fff' },
+                data: [{ value: score }]
+            }]
+        });
+
+        // TREND
+        const trendChart = echarts.init(document.getElementById('trendChart'));
+        trendChart.setOption({
+            title: { text: 'Performance Verlauf', textStyle: { color: '#fff' } },
+            xAxis: {
+                type: 'category',
+                data: ['Mo','Di','Mi','Do','Fr','Heute'],
+                axisLabel: { color: '#ccc' }
+            },
+            yAxis: { axisLabel: { color: '#ccc' } },
+            series: [{
+                type: 'line',
+                smooth: true,
+                data: trend,
+                lineStyle: { color: '#01F8C1' }
+            }]
+        });
+
+    });
+</script>
+
+<script>
+    document.getElementById('dashboardForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        fetch(window.location.pathname + '?type=999', {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                console.log("AJAX DATA:", data);
+
+                // KPI Update
+                document.querySelector('[data-target]').innerText = data.score;
+
+                // Charts neu bauen
+                updateCharts(data);
+
+            });
+    });
+</script>

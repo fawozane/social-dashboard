@@ -1,0 +1,168 @@
+:root {
+    --bg-main: #0b1f2a;
+    --bg-gradient: linear-gradient(135deg, #0b1f2a, #023952);
+
+    --bg-card: #132f3c;
+    --bg-card-hover: #1c4455;
+
+    --primary: #01F8C1;
+    --accent: #EB0052;
+
+    --text-main: #ffffff;
+    --text-muted: #9fb3c8;
+
+    --border-soft: rgba(255, 255, 255, 0.08);
+
+    /* Branding */
+    --econsor-blue: #023952;
+    --econsor-highlight: #01F8C1;
+    --econsor-salmon: #EB0052;
+
+    /* Typography */
+    --h1: 38px;
+    --h2: 32px;
+
+    --small: 1rem;
+    --medium: 2rem;
+    --large: 4rem;
+
+    --radius: 12px;
+    --main-font: Arial, sans-serif;
+}
+
+/* BASE */
+.social-dashboard {
+    padding: var(--large);
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    font-family: var(--main-font);
+}
+
+.social-dashboard h1 {
+    font-size: var(--h2);
+    margin-bottom: var(--medium);
+}
+
+/* KPI GRID */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--medium);
+}
+
+/* KPI CARD */
+.kpi-card {
+    background: linear-gradient(145deg, #132f3c, #0e2530);
+    padding: var(--medium);
+    border-radius: var(--radius);
+    text-align: center;
+    border: 1px solid var(--border-soft);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.kpi-card:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-6px);
+}
+
+.kpi-card span {
+    color: white;
+    font-size: 0.9rem;
+}
+
+.kpi-card h2 {
+    font-size: var(--h2);
+    margin-top: 0.5rem;
+    font-weight: bold;
+    transition: 0.3s;
+
+}
+.kpi-card:hover h2 {
+    text-shadow: 0 0 15px rgba(1,248,193,0.6);
+}
+
+/* SCORE */
+.kpi-card.score {
+    background: linear-gradient(135deg, #f59e0b, #ffb703);
+    color: #000;
+    box-shadow: 0 10px 25px rgba(255, 183, 3, 0.3);
+}
+
+.kpi-card.score.high {
+    background: var(--econsor-highlight);
+    color: #000;
+}
+
+.kpi-card.score.medium {
+    background: #f59e0b;
+    color: #000;
+}
+
+.kpi-card.score.low {
+    background: var(--econsor-salmon);
+}
+.kpi-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(1,248,193,0.15), transparent 60%);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.kpi-card:hover::before {
+    opacity: 1;
+}
+/* CHART GRID */
+.chart-grid {
+    margin-top: var(--large);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--medium);
+}
+
+.kpi-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.chart {
+    height: 350px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+/* TREND */
+#trendChart {
+    margin-top: var(--large);
+    height: 350px;
+}
+
+/* TIPS */
+.tips-box {
+    margin-top: var(--large);
+    background: rgba(255, 255, 255, 0.05);
+    padding: var(--medium);
+    border-radius: var(--radius);
+}
+
+.tips-box li {
+    margin-bottom: 0.5rem;
+}
+
+/* ANIMATION */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeIn 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
