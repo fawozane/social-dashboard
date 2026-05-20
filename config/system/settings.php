@@ -130,9 +130,10 @@ return [
                 ],
             ],
         ],
-        'devIPmask' => '',
-        'displayErrors' => 0,
+        'devIPmask' => '*',
+        'displayErrors' => 1,
         'encryptionKey' => 'd00a5a82550e702c4b47cca30fdd4f58d431be6232e7de5159a25f601f8b323d6bb65c1253b5fc55d8d3a5d48991a83a',
+        'errorHandlerErrors' => 30719,
         'exceptionalErrors' => 4096,
         'features' => [
             'frontend.cache.autoTagging' => true,

@@ -1,1 +1,40 @@
+# macOS
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+
+# Composer
 /vendor/
+
+# Node
+/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TYPO3
+/var/
+/public/typo3temp/
+/public/fileadmin/_processed_/
+/public/typo3conf/LocalConfiguration.php
+/public/typo3conf/AdditionalConfiguration.php
+
+# DDEV
+.ddev/.webimageBuild/
+.ddev/db_snapshots/
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# Build Dateien
+dist/
+build/
+
+# Cache
+.cache/
