@@ -14,41 +14,6 @@ class SocialRepository
     }
 
     /**
-     *  TOKEN SPEICHERN
-     */
-    public function saveToken(string $accessToken): void
-    {
-        $connection = $this->getConnection('tx_socialdashboard_token');
-
-        // optional: nur 1 Token behalten
-        $connection->truncate('tx_socialdashboard_token');
-
-        $connection->insert('tx_socialdashboard_token', [
-            'access_token' => $accessToken,
-            'created_at' => time()
-        ]);
-    }
-
-    /**
-     *  TOKEN HOLEN
-     */
-    public function getToken(): ?string
-    {
-        $connection = $this->getConnection('tx_socialdashboard_token');
-
-        $row = $connection->select(
-            ['access_token'],
-            'tx_socialdashboard_token',
-            [],
-            [],
-            ['uid DESC'],
-            1
-        )->fetchAssociative();
-
-        return $row['access_token'] ?? null;
-    }
-
-    /**
      *  METRICS SPEICHERN
      */
     public function saveMetric(
@@ -84,7 +49,7 @@ class SocialRepository
                 'metric_date >=' => $since
             ],
             [],
-            ['metric_date ASC']
+            ['metric_date' => 'ASC']
         )->fetchAllAssociative();
 
         return $rows ?: [];
@@ -120,7 +85,7 @@ class SocialRepository
             'tx_socialdashboard_stats',
             ['platform' => $platform],
             [],
-            ['uid DESC'],
+            ['uid' => 'DESC'],
             1
         )->fetchAssociative();
 
