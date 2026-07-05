@@ -21,6 +21,7 @@ yarn-error.log*
 /public/typo3conf/LocalConfiguration.php
 /public/typo3conf/AdditionalConfiguration.php
 
+
 # DDEV
 .ddev/.webimageBuild/
 .ddev/db_snapshots/
@@ -38,3 +39,6 @@ build/
 
 # Cache
 .cache/
+
+# config
+config/system/additional.php

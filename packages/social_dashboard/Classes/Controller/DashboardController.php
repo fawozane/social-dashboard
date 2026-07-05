@@ -31,17 +31,17 @@ class DashboardController extends ActionController
         $requestData = $this->request->getArgument('data') ?? [];
 
         $data = [
-            'followers' => (int)($requestData['followers'] ?? 0),
-            'likes' => (int)($requestData['likes'] ?? 0),
-            'comments' => (int)($requestData['comments'] ?? 0),
-            'posts' => (int)($requestData['posts'] ?? 0),
+            'followers' => (int) ($requestData['followers'] ?? 0),
+            'likes' => (int) ($requestData['likes'] ?? 0),
+            'comments' => (int) ($requestData['comments'] ?? 0),
+            'posts' => (int) ($requestData['posts'] ?? 0),
         ];
 
         // Debug (optional)
         // var_dump($data); die();
 
         $result = $this->scoreService->calculateScore($data);
-        $tips   = $this->scoreService->generateTips($data);
+        $tips = $this->scoreService->generateTips($data);
 
         $chartData = [
             'likes' => $data['likes'],

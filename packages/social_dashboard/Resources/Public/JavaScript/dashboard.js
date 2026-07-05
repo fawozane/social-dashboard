@@ -244,7 +244,7 @@ function init() {
             document.getElementById('range')?.addEventListener('change', loadData);
 
             loadData();
-            setInterval(loadData, 240000);
+            setInterval(loadData, 24000);
 
             observer.disconnect();
         }

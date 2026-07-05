@@ -10,7 +10,8 @@ class MetaAuthService
 
     public function __construct(
         protected RequestFactory $requestFactory
-    ) {}
+    ) {
+    }
 
     public function getLoginUrl(): string
     {
@@ -94,8 +95,8 @@ class MetaAuthService
 
             $response = $this->requestFactory->request($url, 'GET', [
                 'query' => [
-                    'client_id' => '2055541798705176',
-                    'client_secret' => '20f0dc9299af4124aede489c0241ccc9',
+                    'client_id' => $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['social_dashboard']['clientId'],
+                    'client_secret' => $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['social_dashboard']['clientSecret'],
                     'redirect_uri' => 'https://social-dashboard3.ddev.site/index.php?eID=meta_callback',
                     'code' => $code,
                 ],

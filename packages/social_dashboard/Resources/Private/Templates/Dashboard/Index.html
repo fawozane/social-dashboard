@@ -15,11 +15,13 @@
     <script type="application/json" id="social-dashboard-config">
         <f:format.raw><f:format.json value="{ajaxUrl: ajaxUrl, initialData: initialData}" /></f:format.raw>
     </script>
+    
     <f:if condition="!{isConnected}">
         <a href="{loginUrl}" target="_blank" class="instagram-btn btn btn-primary">
             Instagram verbinden
         </a>
     </f:if>
+
     <div class="dashboard">
 
         <div class="filter-bar">
