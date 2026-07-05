@@ -24,13 +24,7 @@ It is designed to help businesses and content creators monitor performance, enga
 
 ![Dashboard](social-dashboard-2.webp)
 
-### Login
 
-![Login](images/login.png)
-
-### Analytics
-
-![Analytics](images/analytics.png)
 
 ## Tech Stack
 
