@@ -22,7 +22,7 @@ It is designed to help businesses and content creators monitor performance, enga
 
 ### Dashboard
 
-![Dashboard](social-dashboard-2.webp)
+![Dashboard](Documentation/social-dashboard-2.webp)
 
 
 
